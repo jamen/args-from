@@ -1,6 +1,6 @@
 {
   "name": "@jamen/args-from",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Turn package.json field into CLI args.",
   "bin": "./bin/args-from",
   "author": "Jamen Marz <jamenmarz@gmail.com>",
