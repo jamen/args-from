@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+const path = require('path')
+const dargs = require('dargs')
+
+function resolveConfigPath (dir, og) {
+  for (let filename of fs.readdirSync(dir)) {
+    if (filename === 'package.json') {
+      return path.join(dir, filename)
+    }
+  }
+
+  if (dir !== '/') {
+    return resolveConfigPath(path.resolve(dir, '..'), og || dir)
+  } else {
+    throw new Error('Could not resolve package.json from ' + og)
+  }
+}
+
+const configPath = resolveConfigPath(process.cwd())
+const config = JSON.parse(fs.readFileSync(configPath))
+const name = process.argv[2]
+
+if (config[name]) {
+  let sect = config[name]
+  for (let key in sect) {
+    if (typeof sect[key] === 'string') sect[key] = '"' + sect[key] + '"'
+  }
+  process.stdout.write(Buffer.from(dargs(sect).join(' ')))
+} else {
+  throw new Error('Failed to find key ' + name)
+}

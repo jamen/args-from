@@ -1,0 +1,22 @@
+{
+  "name": "@jamen/args-from",
+  "version": "0.0.0",
+  "description": "Turn package.json field into CLI args.",
+  "bin": "./bin/args-from",
+  "author": "Jamen Marz <jamenmarz@gmail.com>",
+  "license": "MIT",
+  "repository": "jamen/args-from",
+  "scripts": {
+    "test": "node test"
+  },
+  "bugs": {
+    "url": "https://github.com/jamen/args-from/issues"
+  },
+  "homepage": "https://github.com/jamen/args-from#readme",
+  "dependencies": {
+    "dargs": "^5.1.0"
+  },
+  "devDependencies": {
+    "tape": "^4.8.0"
+  }
+}
