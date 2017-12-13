@@ -24,9 +24,25 @@ const name = process.argv[2]
 
 if (config[name]) {
   let sect = config[name]
+  let input = []
+
   for (let key in sect) {
-    if (typeof sect[key] === 'string') sect[key] = '"' + sect[key] + '"'
+    if (key[0] === '_') {
+      if (Array.isArray(sect[key])) {
+        input = input.concat(sect[key])
+      } else {
+        input.push(sect[key])
+      }
+      delete sect[key]
+    }
+
+    if (typeof sect[key] === 'string') {
+      sect[key] = '"' + sect[key] + '"'
+    }
   }
+
+  sect._ = input
+
   process.stdout.write(Buffer.from(dargs(sect).join(' ')))
 } else {
   throw new Error('Failed to find key ' + name)

@@ -14,7 +14,7 @@ function argsFrom (field, done) {
 }
 
 test('config to args', t => {
-  t.plan(2)
+  t.plan(4)
 
   argsFrom('test1', args => {
     t.is(args, '--foo=1 --bar=2')
@@ -22,5 +22,13 @@ test('config to args', t => {
 
   argsFrom('test2', args => {
     t.is(args, '--foo="Hello world"')
+  })
+
+  argsFrom('test3', args => {
+    t.is(args, '--output="bar" foo')
+  })
+
+  argsFrom('test4', args => {
+    t.is(args, '--output="bar" foo')
   })
 })

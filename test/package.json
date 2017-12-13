@@ -5,5 +5,17 @@
   },
   "test2": {
     "foo": "Hello world"
+  },
+  "test3": {
+    "_": [ "foo" ],
+    "output": "bar"
+  },
+  "test4": {
+    "_input": "foo",
+    "output": "bar"
+  },
+  "test5": {
+    "_input": "foo",
+    "_output": "bar"
   }
 }
